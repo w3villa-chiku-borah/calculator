@@ -1,14 +1,23 @@
+
+
+
 function typeNumber(elm){
+
     let number=document.getElementById('button-1');
     let screen= document.getElementsByClassName('cal-screen')[0];
     // screen.innerHTML=elm.innerText;
-  
+  if(screen.innerText==="ERROR"){
+    screen.innerHTML=""
+  }
     screen.innerHTML= screen.innerText+elm.innerText;
 }
 function typeDot(elm){
     let number=document.getElementById('button-dot');
     let screen= document.getElementsByClassName('cal-screen')[0];
     // screen.innerHTML=elm.innerText;
+    if(screen.innerText==="ERROR" || screen.innerText==="NoN"  ){
+        screen.innerHTML=""
+      }
     let value = screen.innerText;
 
 //   if()
@@ -20,6 +29,7 @@ else{
 
     screen.innerHTML= screen.innerText+number.innerText;
 }
+
 }
 function typeOperetion(elm){
     let screen= document.getElementsByClassName('cal-screen')[0];
@@ -34,6 +44,10 @@ function typeOperetion(elm){
     screen.innerHTML= "";
 
   }
+  else if(screen.innerText==="ERROR" || screen.innerText==="NoN" ){
+    screen.innerHTML= "";
+
+  }
   else{elm.innerText
     screen.innerHTML= screen.innerText+elm.innerText;
 }
@@ -43,10 +57,14 @@ function typeOperetion(elm){
 function allClear(){
     let screen= document.getElementsByClassName('cal-screen')[0];
    screen.innerHTML="";
+
 }
 function preClear(){
     let screen= document.getElementsByClassName('cal-screen')[0];
     // var string = 'Scaler Academy';
+    if(screen.innerText==="ERROR" || screen.innerText==="NoN" ){
+        screen.innerHTML=""
+      }
 
 screen.innerText = screen.innerText.slice(0,-1);
 // console.log(string); 
@@ -54,9 +72,13 @@ screen.innerText = screen.innerText.slice(0,-1);
 function equal(){
     let screen= document.getElementsByClassName('cal-screen')[0];
     let value = screen.innerText;
+    try{
     if(value.includes("+") || value.includes("-") ||  value.includes("/") ||  value.includes("*") ){
         screen.innerHTML=eval(value);
     }
 }
-
+catch{
+    screen.innerHTML="ERROR";
+}
+}
 
